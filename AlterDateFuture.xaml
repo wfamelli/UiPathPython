@@ -1,9 +1,11 @@
-<Activity mc:Ignorable="sap sap2010" x:Class="AlterDateFuture" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:p="http://schemas.uipath.com/workflow/activities/python" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=System.Private.CoreLib" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+<Activity mc:Ignorable="sap sap2010" x:Class="AlterDateFuture" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:p="http://schemas.uipath.com/workflow/activities/python" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=System.Private.CoreLib" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
   <x:Members>
     <x:Property Name="in_objDate_NumbersDay" Type="InArgument(scg:IEnumerable(x:Object))" />
     <x:Property Name="out_objResultPython" Type="OutArgument(x:String)" />
+    <x:Property Name="in_sPathPython" Type="InArgument(x:String)" />
+    <x:Property Name="in_sLibraryPathPython" Type="InArgument(x:String)" />
   </x:Members>
-  <sap:VirtualizedContainerService.HintSize>1184,827</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>1106,987</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>ActivityBuilder_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <sco:Collection x:TypeArguments="x:String">
@@ -87,13 +89,14 @@
       <AssemblyReference>System.ServiceModel.Activities</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence sap:VirtualizedContainerService.HintSize="546,559" sap2010:WorkflowViewState.IdRef="Sequence_3">
+  <Sequence sap:VirtualizedContainerService.HintSize="546,712" sap2010:WorkflowViewState.IdRef="Sequence_3">
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <p:PythonScope OperationTimeout="{x:Null}" DisplayName="Python Scope" sap:VirtualizedContainerService.HintSize="484,448" sap2010:WorkflowViewState.IdRef="PythonScope_1" LibraryPath="C:\Users\William\AppData\Local\Programs\Python\Python310\python310.dll" Path="C:\Users\William\AppData\Local\Programs\Python\Python310" TargetPlatform="x64" WorkingFolder="C:\Users\William\Documents\UiPath\UiPathPython">
+    <ui:Comment sap:VirtualizedContainerService.HintSize="484,113" sap2010:WorkflowViewState.IdRef="Comment_1" Text="// Foi utilizada a versão 3.10 do python pois não há suporte do UiPath para a versão 3.11 ate a data da publicação deste projeto.&#xA;deve ser atualizado o .net para a versão 7." />
+    <p:PythonScope OperationTimeout="{x:Null}" DisplayName="Python Scope" sap:VirtualizedContainerService.HintSize="484,448" sap2010:WorkflowViewState.IdRef="PythonScope_1" LibraryPath="[in_sLibraryPathPython]" Path="[in_sPathPython]" TargetPlatform="x64" WorkingFolder="C:\Users\William\Documents\UiPath\UiPathPython">
       <p:PythonScope.Body>
         <ActivityAction x:TypeArguments="x:Object">
           <ActivityAction.Argument>
